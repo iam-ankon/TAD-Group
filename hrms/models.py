@@ -211,12 +211,12 @@ class EmployeeDetails(models.Model):
 
 class PerformanseAppraisal(models.Model):
     employee_id = models.CharField(max_length=20, unique=True)
-    name = models.CharField(max_length=255)
-    designation = models.CharField(max_length=255)
-    joining_date = models.DateField()
-    department = models.CharField(max_length=255)
-    last_increment_date = models.DateField()
-    last_promotion_date = models.DateField()
+    name = models.CharField(max_length=255,blank=True, null=True)
+    designation = models.CharField(max_length=255,blank=True, null=True)
+    joining_date = models.DateField(blank=True, null=True)
+    department = models.CharField(max_length=255,blank=True, null=True)
+    last_increment_date = models.DateField(blank=True, null=True)
+    last_promotion_date = models.DateField(blank=True, null=True)
     last_education = models.CharField(max_length=255)
     job_knowledge = models.IntegerField(blank=True, null=True)
     job_description = models.TextField(blank=True, null=True)
@@ -504,34 +504,7 @@ class EmployeeLeave(models.Model):
         email.content_subtype = "html"  # tells Django to treat the body as HTML
         email.send(fail_silently=False)
 
-
-    # def send_leave_email(self):
-    #     subject = f"Leave Application - {self.employee.name}"
-        
-    #     lines = [
-    #         "Leave Application Details",
-    #         "",
-    #         f"Employee Name: {self.employee.name}",
-    #         f"Leave Type: {self.get_leave_type_display()}",
-    #         f"Start Date: {self.start_date}",
-    #         f"End Date: {self.end_date}",
-    #         f"Number of Days: {self.leave_days}",
-    #         f"Reason: {self.reason}",
-    #         f"Status: {self.get_status_display()}",
-    #     ]
-        
-    #     if self.sub_person:
-    #         lines.append(f"Substitute Person: {self.sub_person}")
-        
-    #     lines.extend(["", "This is an automated email. Please do not reply directly."])
-        
-    #     send_mail(
-    #         subject=subject,
-    #         message="\n".join(lines),
-    #         from_email=self.from_email,
-    #         recipient_list=[self.to_email],
-    #         fail_silently=False,
-    #     )        
+   
 
 
 
