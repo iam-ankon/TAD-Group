@@ -126,28 +126,28 @@ WSGI_APPLICATION = 'tadgroup.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'tad_database',
-#         'USER': 'tad_database_user',
-#         'PASSWORD': 'E0iJscvX7XQdfpFinuuJeYQe72EHIjrf',
-#         'HOST': 'dpg-d03qhuqli9vc73funj5g-a.oregon-postgres.render.com',  # update this
-#         'PORT': '5432',
-#     }
-# }
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tadbackend',
-        'USER': 'ankon',
-        'PASSWORD': 'ankon12345',
-        'HOST': 'tadbackend.c78c4moq4ku4.eu-north-1.rds.amazonaws.com',
+        'NAME': 'tad_database',
+        'USER': 'tad_database_user',
+        'PASSWORD': 'E0iJscvX7XQdfpFinuuJeYQe72EHIjrf',
+        'HOST': 'dpg-d03qhuqli9vc73funj5g-a.oregon-postgres.render.com',  # update this
         'PORT': '5432',
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'tadbackend',
+#         'USER': 'ankon',
+#         'PASSWORD': 'ankon12345',
+#         'HOST': 'tadbackend.c78c4moq4ku4.eu-north-1.rds.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation
