@@ -12,19 +12,20 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
-
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 
 
-# Define the media URL and root path
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # Use WhiteNoise for serving static files
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -126,28 +127,28 @@ WSGI_APPLICATION = 'tadgroup.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tad_database',
-        'USER': 'tad_database_user',
-        'PASSWORD': 'E0iJscvX7XQdfpFinuuJeYQe72EHIjrf',
-        'HOST': 'dpg-d03qhuqli9vc73funj5g-a.oregon-postgres.render.com',  # update this
-        'PORT': '5432',
-    }
-}
-
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'tadbackend',
-#         'USER': 'ankon',
-#         'PASSWORD': 'ankon12345',
-#         'HOST': 'tadbackend.c78c4moq4ku4.eu-north-1.rds.amazonaws.com',
+#         'NAME': 'tad_database',
+#         'USER': 'tad_database_user',
+#         'PASSWORD': 'E0iJscvX7XQdfpFinuuJeYQe72EHIjrf',
+#         'HOST': 'dpg-d03qhuqli9vc73funj5g-a.oregon-postgres.render.com',  # update this
 #         'PORT': '5432',
 #     }
 # }
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'tadbackend',
+        'USER': 'ankon',
+        'PASSWORD': 'ankon12345',
+        'HOST': 'tadbackend.c78c4moq4ku4.eu-north-1.rds.amazonaws.com',
+        'PORT': '5432',
+    }
+}
 
 
 # Password validation
@@ -233,6 +234,22 @@ AWS_DEFAULT_ACL = None
 AWS_S3_SIGNATURE_VERSION = 's3v4'
 AWS_S3_FILE_OVERWRITE = False
 
+
+STORAGES = {
+
+    # Media file (image) management   
+    "default": {
+        "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
+    },
+    
+    # CSS and JS file management
+    "staticfiles": {
+        "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
+    },
+}
+# Media files URL
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
