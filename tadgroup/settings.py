@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'storages',
     'corsheaders',
     'hrms',
     'merchandiser',
@@ -125,17 +126,28 @@ WSGI_APPLICATION = 'tadgroup.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'tad_database',
+#         'USER': 'tad_database_user',
+#         'PASSWORD': 'E0iJscvX7XQdfpFinuuJeYQe72EHIjrf',
+#         'HOST': 'dpg-d03qhuqli9vc73funj5g-a.oregon-postgres.render.com',  # update this
+#         'PORT': '5432',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tad_database',
-        'USER': 'tad_database_user',
-        'PASSWORD': 'E0iJscvX7XQdfpFinuuJeYQe72EHIjrf',
-        'HOST': 'dpg-d03qhuqli9vc73funj5g-a.oregon-postgres.render.com',  # update this
+        'NAME': 'tadbackend',
+        'USER': 'ankon',
+        'PASSWORD': 'ankon12345',
+        'HOST': 'tadbackend.c78c4moq4ku4.eu-north-1.rds.amazonaws.com',
         'PORT': '5432',
     }
 }
-
 
 
 # Password validation
@@ -206,6 +218,21 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Sender address
 # }
 
 # EMAIL_SSL_CONTEXT = ssl.create_default_context(cafile=certifi.where())
+
+# AWS S3 Settings (using environment variables)
+AWS_ACCESS_KEY_ID =  os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')  # Set in environment
+AWS_STORAGE_BUCKET_NAME = 'tadbackend'
+AWS_QUERYSTRING_AUTH = False
+AWS_S3_REGION_NAME = 'eu-north-1'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com'%AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_DEFAULT_ACL = None
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_S3_FILE_OVERWRITE = False
+
 
 JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
