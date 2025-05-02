@@ -114,16 +114,28 @@ WSGI_APPLICATION = 'tadgroup.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'tad_database',
+#         'USER': 'tad_database_user',
+#         'PASSWORD': 'E0iJscvX7XQdfpFinuuJeYQe72EHIjrf',
+#         'HOST': 'dpg-d03qhuqli9vc73funj5g-a',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'tad_database',
         'USER': 'tad_database_user',
         'PASSWORD': 'E0iJscvX7XQdfpFinuuJeYQe72EHIjrf',
-        'HOST': 'dpg-d03qhuqli9vc73funj5g-a',
+        'HOST': 'dpg-d03qhuqli9vc73funj5g-a.oregon-postgres.render.com',  # update this
         'PORT': '5432',
     }
 }
+
 
 
 # Password validation
